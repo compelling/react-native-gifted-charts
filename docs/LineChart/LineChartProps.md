@@ -3,7 +3,7 @@
 ### Basic props
 
 | Prop                          | Type           | Description                                                                                                    | Default value              |
-| ----------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------- |
+|-------------------------------| -------------- |----------------------------------------------------------------------------------------------------------------|----------------------------|
 | data                          | Array of items | An item object represents a point in the line chart. It is described in the next table.                        | \_                         |
 | data2                         | Array of items | Second set of dataPoint for the second line                                                                    | \_                         |
 | data3                         | Array of items | Third set of dataPoint for the third line                                                                      | \_                         |
@@ -33,6 +33,9 @@
 | onDataChangeAnimationDuration | number         | Duration (milliseconds) in which the transition animation takes place on a change in data                      | 400                        |
 | onPress                       | Function       | The callback function that handles the press event. `item` and `index` are received as props                   | \_                         |
 | scrollToEnd                   | boolean        | When set to true, the chart automatically scrolls to the rightmost data point                                  | false                      |
+| scrollTo                      | number         | Position to scroll to on chart render (values between 0 and 1, percentage of chart width)                      | false                      |
+| showScrollToIndicator         | boolean        | When set to true, show a vertical line indicating the position passed in scrollTo param                        | false                      |
+| onScroll                      | Function       | Callback function called when chart is scrolled                                                                | null                       |
 | scrollAnimation               | boolean        | When set to true, scroll animation is visible when the chart automatically scrolls to the rightmost data point | true                       |
 | scrollEventThrottle           | number         | (only for iOS) see https://reactnative.dev/docs/scrollview#scrolleventthrottle-ios                             | 0                          |
 | initialSpacing                | number         | distance of the first data point from the Y axis                                                               | 20                         |

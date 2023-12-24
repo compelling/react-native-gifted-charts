@@ -5,7 +5,7 @@
 ### Basic props
 
 | Prop                         | Type           | Description                                                                                             | Default value       |
-| ---------------------------- | -------------- | ------------------------------------------------------------------------------------------------------- | ------------------- |
+|------------------------------|----------------|---------------------------------------------------------------------------------------------------------|---------------------|
 | data                         | Array of items | An item object represents a bar in the bar chart. It is described in the next table.                    | \_                  |
 | width                        | number         | Width of the Bar chart                                                                                  | width of the parent |
 | height                       | number         | Height of the Bar chart (excluding the bottom label)                                                    | 200                 |
@@ -32,6 +32,9 @@
 | lineBehindBars               | boolean        | When set to true, the line chart will appear behind the Bars in case of overlap                         | false               |
 | autoShiftLabels              | boolean        | When set to true, automatically shifts the X axis labels for negative values                            | false               |
 | scrollToEnd                  | boolean        | When set to true, the chart automatically scrolls to the rightmost bar                                  | false               |
+| scrollTo                     | number         | Position to scroll to on chart render (values between 0 and 1, percentage of chart width)               | false               |
+| showScrollToIndicator        | boolean        | When set to true, show a vertical line indicating the position passed in scrollTo param                 | false               |
+| onScroll                     | Function       | Callback function called when chart is scrolled                                                         | null                |
 | scrollAnimation              | boolean        | When set to true, scroll animation is visible when the chart automatically scrolls to the rightmost bar | true                |
 | scrollEventThrottle          | number         | (only for iOS) see https://reactnative.dev/docs/scrollview#scrolleventthrottle-ios                      | 0                   |
 | initialSpacing               | number         | distance of the first bar from the Y axis                                                               | 40                  |
