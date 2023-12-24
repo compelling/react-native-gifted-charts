@@ -207,7 +207,10 @@ export type BarAndLineChartsWrapperTypes = {
   disableScroll: boolean;
   showScrollIndicator: boolean;
   scrollToEnd: boolean;
+  scrollToPosition: number;
   scrollToIndex: number | undefined;
+  showScrollToIndicator: boolean;
+  onScroll: any;
   scrollAnimation: boolean;
   indicatorColor: 'black' | 'default' | 'white' | undefined;
   setSelectedIndex: any;

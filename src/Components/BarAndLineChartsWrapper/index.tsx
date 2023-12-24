@@ -37,6 +37,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
     disableScroll,
     showScrollIndicator,
     scrollToEnd,
+    scrollToPosition,
+    onScroll,
     scrollToIndex,
     scrollAnimation,
     indicatorColor,
@@ -373,6 +375,8 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
         scrollEventThrottle={
           props.scrollEventThrottle ? props.scrollEventThrottle : 16
         }
+        bounces={false}
+        onScroll={props.onScroll}
         horizontal
         ref={scrollRef}
         style={[
@@ -425,10 +429,32 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
                 ((barWidth ?? 0) + spacing) * scrollToIndex -
                 spacing,
             });
+          } else if (scrollRef.current && scrollToPosition) {
+             scrollRef.current.scrollTo({
+                x: totalWidth * scrollToPosition,
+                y: 0,
+                animated: scrollAnimation,
+             });
           }
         }}
         {...remainingScrollViewProps}>
         <Fragment>
+          {
+            !!scrollToPosition && props.showScrollToIndicator && (
+              <View
+                style={{
+                  position: 'absolute',
+                  //height: minValue < 0 ? (maxValue - minValue) * containerHeight : containerHeight,
+                  height: containerHeight,
+                  bottom: 60 + labelsExtraHeight,
+                  width: 2,
+                  zIndex: 100000,
+                  backgroundColor: '#ff4400',
+                  left: (totalWidth - initialSpacing) * props.scrollToPosition + initialSpacing,
+                }}
+              />
+            )
+          }
           {showVerticalLines ? (
             <RenderVerticalLines {...verticalLinesProps} />
           ) : null}

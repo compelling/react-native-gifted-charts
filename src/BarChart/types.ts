@@ -198,6 +198,9 @@ export type BarChartPropsType = {
   autoShiftLabels?: boolean;
   scrollRef?: any;
   scrollToEnd?: boolean;
+  scrollTo?: number;
+  showScrollToIndicator?: boolean;
+  onScroll?: Function;
   scrollToIndex?: number;
   scrollAnimation?: boolean;
   scrollEventThrottle?: number;

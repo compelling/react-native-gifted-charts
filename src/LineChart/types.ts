@@ -280,6 +280,9 @@ export type LineChartPropsType = {
   scrollRef?: any;
   scrollToEnd?: boolean;
   scrollToIndex?: number;
+  scrollTo?: number;
+  showScrollToIndicator?: boolean;
+  onScroll?: Function;
   scrollAnimation?: boolean;
   scrollEventThrottle?: number;
   noOfSectionsBelowXAxis?: number;

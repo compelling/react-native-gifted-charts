@@ -27,7 +27,7 @@ import {BarAndLineChartsWrapperTypes} from '../utils/types';
 import {StripAndLabel} from '../Components/common/StripAndLabel';
 import {Pointer} from '../Components/common/Pointer';
 
-export const BarChart = (props: BarChartPropsType) => {
+export const BarChart = React.forwardRef((props: BarChartPropsType, ref) => {
   const scrollRef = props.scrollRef ?? useRef(null);
   const [points, setPoints] = useState('');
   const [points2, setPoints2] = useState('');
@@ -51,6 +51,12 @@ export const BarChart = (props: BarChartPropsType) => {
   const isAnimated = props.isAnimated ?? BarDefaults.isAnimated;
   const animationDuration =
     props.animationDuration ?? BarDefaults.animationDuration;
+
+  React.useImperativeHandle(ref, () => ({
+    scrollTo : (x) => {
+      scrollRef.current.scrollTo({x: x, animated: false})
+    }
+   }));
 
   const data = useMemo(() => {
     if (!props.data) {
@@ -106,6 +112,8 @@ export const BarChart = (props: BarChartPropsType) => {
   const stepHeight = props.stepHeight ?? containerHeight / noOfSections;
   const labelWidth = props.labelWidth ?? AxesAndRulesDefaults.labelWidth;
   const scrollToEnd = props.scrollToEnd ?? BarDefaults.scrollToEnd;
+  const scrollToPosition = props.scrollTo || 0;
+  const showScrollToIndicator = props.showScrollToIndicator || false;
   const scrollAnimation = props.scrollAnimation ?? BarDefaults.scrollAnimation;
   const scrollEventThrottle =
     props.scrollEventThrottle ?? BarDefaults.scrollEventThrottle;
@@ -911,6 +919,9 @@ export const BarChart = (props: BarChartPropsType) => {
     disableScroll,
     showScrollIndicator,
     scrollToEnd,
+    scrollToPosition,
+    showScrollToIndicator,
+    onScroll: props.onScroll,
     scrollToIndex: props.scrollToIndex,
     scrollAnimation,
     scrollEventThrottle,
@@ -964,4 +975,4 @@ export const BarChart = (props: BarChartPropsType) => {
   };
 
   return <BarAndLineChartsWrapper {...barAndLineChartsWrapperProps} />;
-};
+});

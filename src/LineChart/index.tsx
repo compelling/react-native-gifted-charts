@@ -67,7 +67,7 @@ import {Pointer} from '../Components/common/Pointer';
 let initialData: Array<itemType> | null = null;
 let animations: Array<any> = [];
 
-export const LineChart = (props: LineChartPropsType) => {
+export const LineChart = React.forwardRef((props: LineChartPropsType, ref) => {
   const scrollRef = props.scrollRef ?? useRef(null);
   const curvature = props.curvature ?? LineDefaults.curvature;
   const curveType = props.curveType ?? LineDefaults.curveType;
@@ -215,9 +215,17 @@ export const LineChart = (props: LineChartPropsType) => {
   }, [props.yAxisOffset, dataSet]);
 
   const scrollToEnd = props.scrollToEnd || LineDefaults.scrollToEnd;
+  const scrollTo = props.scrollTo || 0;
+  const showScrollToIndicator = props.showScrollToIndicator || false;
   const scrollAnimation = props.scrollAnimation ?? LineDefaults.scrollAnimation;
   const scrollEventThrottle =
     props.scrollEventThrottle ?? LineDefaults.scrollEventThrottle;
+
+  React.useImperativeHandle(ref, () => ({
+    scrollTo : (x) => {
+      scrollRef.current.scrollTo({x: x, animated: false});
+    }
+  }));
 
   const opacValue = useMemo(() => new Animated.Value(0), []);
   const widthValue = useMemo(() => new Animated.Value(0), []);
@@ -3620,7 +3628,9 @@ export const LineChart = (props: LineChartPropsType) => {
     disableScroll,
     showScrollIndicator,
     scrollToEnd,
+    scrollToPosition: scrollTo,
     scrollToIndex: props.scrollToIndex,
+    showScrollToIndicator,
     scrollAnimation,
     scrollEventThrottle,
     indicatorColor: props.indicatorColor,
@@ -3667,4 +3677,4 @@ export const LineChart = (props: LineChartPropsType) => {
   };
 
   return <BarAndLineChartsWrapper {...barAndLineChartsWrapperProps} />;
-};
+});
