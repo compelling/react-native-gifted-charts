@@ -3632,6 +3632,7 @@ export const LineChart = React.forwardRef((props: LineChartPropsType, ref) => {
     scrollToPosition: scrollTo,
     scrollToIndex: props.scrollToIndex,
     showScrollToIndicator,
+    onScroll: props.onScroll,
     scrollAnimation,
     scrollEventThrottle,
     indicatorColor: props.indicatorColor,

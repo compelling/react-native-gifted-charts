@@ -378,7 +378,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
           props.scrollEventThrottle ? props.scrollEventThrottle : 16
         }
         bounces={false}
-        onScroll={props.onScroll}
+        onScroll={onScroll}
         horizontal
         ref={scrollRef}
         style={[
