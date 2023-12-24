@@ -187,6 +187,7 @@ export type HorizSectionsType = Array<HorizSectionObject>;
 export type BarAndLineChartsWrapperTypes = {
   chartType: chartTypes;
   containerHeight: number;
+  containerStyle: any;
   noOfSectionsBelowXAxis: number;
   stepHeight: number;
   labelsExtraHeight: number;

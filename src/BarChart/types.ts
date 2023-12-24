@@ -53,6 +53,7 @@ export type stackItemType = {
 };
 
 export type BarChartPropsType = {
+  containerStyle?: any;
   width?: number;
   height?: number;
   minHeight?: number;

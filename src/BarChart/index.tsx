@@ -899,6 +899,7 @@ export const BarChart = React.forwardRef((props: BarChartPropsType, ref) => {
   const barAndLineChartsWrapperProps: BarAndLineChartsWrapperTypes = {
     chartType: chartTypes.BAR,
     containerHeight,
+    containerStyle: props.containerStyle,
     noOfSectionsBelowXAxis,
     stepHeight,
     labelsExtraHeight,

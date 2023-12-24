@@ -18,6 +18,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
   const {
     chartType,
     containerHeight,
+    containerStyle,
     noOfSectionsBelowXAxis,
     stepHeight,
     labelsExtraHeight,
@@ -367,6 +368,7 @@ const BarAndLineChartsWrapper = (props: BarAndLineChartsWrapperTypes) => {
           width: actualContainerWidth,
           transform: transformForHorizontal,
         },
+        containerStyle,
       ]}>
       {hideAxesAndRules !== true
         ? renderHorizSections(horizSectionProps)

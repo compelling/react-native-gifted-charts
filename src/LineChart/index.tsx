@@ -3608,6 +3608,7 @@ export const LineChart = React.forwardRef((props: LineChartPropsType, ref) => {
   const barAndLineChartsWrapperProps: BarAndLineChartsWrapperTypes = {
     chartType: chartTypes.LINE,
     containerHeight,
+    containerStyle: props.containerStyle,
     noOfSectionsBelowXAxis,
     stepHeight,
     labelsExtraHeight,

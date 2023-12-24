@@ -16,6 +16,7 @@ import {
 } from '../utils/types';
 
 export type LineChartPropsType = {
+  containerStyle?: any;
   height?: number;
   overflowTop?: number;
   overflowBottom?: number;
